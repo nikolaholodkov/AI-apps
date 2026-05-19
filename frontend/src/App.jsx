@@ -16,6 +16,8 @@ import { useState } from 'react'
 import DataInput from './DataInput'
 // Import the PredictionResult component (displays predictions).
 import PredictionResult from './PredictionResult'
+// Import the chart component (visualizes data points and fitted line).
+import RegressionChart from './RegressionChart'
 
 // ============================================================================
 // COMPONENT DEFINITION
@@ -52,6 +54,9 @@ function App() {
         {/* Display the prediction result component */}
         <PredictionResult trainingData={trainingData} />
       </div>
+
+      {/* Display the regression graph below the main two-column section */}
+      <RegressionChart trainingData={trainingData} />
     </main>
   )
 }
