@@ -1,0 +1,395 @@
+/* ============================================================================
+   APP6 STYLES
+   ============================================================================
+   This stylesheet provides styling for the Linear Regression Predictor app.
+   It includes styles for the layout, forms, tables, and results display.
+   ============================================================================ */
+
+/* ============================================================================
+   GLOBAL STYLES
+   ============================================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* ============================================================================
+   LAYOUT STYLES
+   ============================================================================ */
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header p {
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================================
+   CARD STYLES
+   ============================================================================ */
+
+.card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.card h3 {
+  color: #555;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+/* ============================================================================
+   TABLE STYLES
+   ============================================================================ */
+
+.data-table-wrapper {
+  margin-bottom: 20px;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table thead {
+  background-color: #f5f5f5;
+  position: sticky;
+  top: 0;
+}
+
+.data-table th {
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #ddd;
+}
+
+.data-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+  color: #666;
+}
+
+.data-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* ============================================================================
+   FORM STYLES
+   ============================================================================ */
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  color: #333;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.form-group input {
+  padding: 10px 12px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.form-group input:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+/* ============================================================================
+   BUTTON STYLES
+   ============================================================================ */
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-add {
+  background-color: #667eea;
+  color: white;
+}
+
+.btn-add:hover {
+  background-color: #5568d3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+.btn-remove {
+  background-color: #ff6b6b;
+  color: white;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+.btn-remove:hover {
+  background-color: #ee5a52;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 107, 107, 0.3);
+}
+
+.btn-predict {
+  background-color: #51cf66;
+  color: white;
+}
+
+.btn-predict:hover:not(:disabled) {
+  background-color: #40c057;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(81, 207, 102, 0.3);
+}
+
+.btn-predict:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ============================================================================
+   FORM SECTIONS
+   ============================================================================ */
+
+.add-point-form {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.predict-form {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+/* ============================================================================
+   RESULT STYLES
+   ============================================================================ */
+
+.result-box {
+  background-color: #f0f9ff;
+  border: 2px solid #51cf66;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.result-box h3 {
+  color: #51cf66;
+  margin-top: 0;
+}
+
+.result-item {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.result-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.result-item strong {
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.result-item p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.equation {
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  background-color: white;
+  padding: 10px;
+  border-radius: 3px;
+  color: #667eea;
+  font-weight: 600;
+}
+
+.prediction-value {
+  font-size: 1.8rem;
+  color: #51cf66;
+  font-weight: bold;
+}
+
+.result-details {
+  background-color: white;
+  padding: 10px;
+  border-radius: 3px;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+.result-details p {
+  margin: 5px 0;
+}
+
+/* ============================================================================
+   MESSAGE STYLES
+   ============================================================================ */
+
+.loading,
+.error,
+.hint {
+  margin: 15px 0;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.loading {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #1976d2;
+}
+
+.error {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #c62828;
+}
+
+.hint {
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+  border: 1px solid #7b1fa2;
+  font-size: 0.95rem;
+}
+
+.data-count {
+  text-align: center;
+  color: #999;
+  font-size: 0.9rem;
+  margin-top: 15px;
+}
+
+/* ============================================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================================ */
+
+@media (max-width: 600px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-group {
+    width: 100%;
+  }
+
+  .predict-form {
+    flex-direction: column;
+  }
+
+  .predict-form button {
+    width: 100%;
+  }
+}
